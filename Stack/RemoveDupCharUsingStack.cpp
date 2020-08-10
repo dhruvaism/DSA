@@ -2,35 +2,21 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-void display(stack<char> st)
-  {
-      if(st.empty())
-         return;
-      char c = st.top();
-      st.pop(); 
-      display(st);  
-      cout <<c;
-      st.push(c);
-      
-  }
+
 
 void removeDup(string s)
   {
-      stack<char> st;
-      for(int i=0;i<s.size();i++)
-         {
-             if(st.empty() || st.top()!=s[i])
-                {
-                    st.push(s[i]);
-                }
-              else
-              {
-                  st.pop();
-              }
-                
-         }
-
-         display(st);
+      unordered_map<char,int> map;
+      int n = s.length();
+      for(int i=0;i<n;i++){
+        map[s[i]]++;
+      }
+      for(int i=0;i<n;i++){
+        if(map[s[i]]==1){
+          cout<<s[i];
+        }
+      }
+      cout<<endl;
   }
 
 int main()
@@ -38,5 +24,6 @@ int main()
       string s;
 
       getline(cin,s);
+      
       removeDup(s);
   }
